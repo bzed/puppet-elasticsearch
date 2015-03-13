@@ -163,6 +163,15 @@
 #   Enable Hiera's merging function for the plugins
 #   Defaults to: false
 #
+# [*repository_url*]
+#   Override the elasticsearch package repository URL
+#   Defaults to: http://packages.elasticsearch.org/elasticsearch/
+#
+# [*gpg_key_url*]
+#   Override the download location for the elasticsearch repository gpg key
+#   Defaults to: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
+#
+#
 # The default values for the parameters are set in elasticsearch::params. Have
 # a look at the corresponding <tt>params.pp</tt> manifest file if you need more
 # technical information about them.
@@ -223,7 +232,10 @@ class elasticsearch(
   $instances             = undef,
   $instances_hiera_merge = false,
   $plugins               = undef,
-  $plugins_hiera_merge   = false
+  $plugins_hiera_merge   = false,
+  $repository_url        = $elasticsearch::params::repository_url,
+  $gpg_key_url           = $elasticsearch::params::gpg_key_url
+
 ) inherits elasticsearch::params {
 
   anchor {'elasticsearch::begin': }

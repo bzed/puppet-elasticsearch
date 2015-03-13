@@ -130,6 +130,10 @@ class elasticsearch::params {
     }
   }
 
+  # repository url
+  $repository_url = 'http://packages.elasticsearch.org/elasticsearch/'
+  $gpg_key_url    = 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch'
+
   # service parameters
   case $::operatingsystem {
     'RedHat', 'CentOS', 'Fedora', 'Scientific', 'Amazon', 'OracleLinux', 'SLC': {
